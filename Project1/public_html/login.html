@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+    <head>
+        <title>Login</title>
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<script>
+			 $("#login-button").click(function(event){
+				 event.preventDefault();
+				 
+				 $('form').fadeOut(500);
+				 $('.wrapper').addClass('form-success');
+			});
+		</script>
+    </head>
+    <body>
+        <div class="loginbox">
+			<div class="login-screen">
+				<div class="logintext">
+					<link async href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+					<h1>Login</h1>
+				 </div>
+				 <div class="login-form">						
+					<form class='form' action='login' method='POST'>
+						<div class="control-group">
+							<input type='text' name='username-email' placeholder='Username' class="login-field" id="login-name">
+							<label class="login-field-icon fui-user" for="login-name"></label>
+						</div>
+						<div class="control-group">
+							<input type='password' name='password' placeholder='Password' class="login-field" id="login-pass">
+							<label class="login-field-icon fui-lock" for="login-pass"></label>
+						</div>
+						<br>
+						<br>
+						<button class="btn btn-primary btn-large btn-block" type="submit" id="login-button">Login</button>
+						<br><br>
+						<a href='new_user.jsp'>New user?</a>
+					</form>
+				</div>
+			</div>
+		</div>
+    </body>
+	<div class="spinner circles" div id="s">
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	</div>
+</html>

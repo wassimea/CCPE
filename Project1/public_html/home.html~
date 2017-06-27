@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    <head>
+        <title>Home</title>
+    </head>
+    <body>
+        <div id='header'>
+            <table>
+                <tr>
+                    <td>Welcome</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

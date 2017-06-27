@@ -1,0 +1,108 @@
+/*
+  Simple CSS navigation bar with fading inactive links
+*/
+#header
+{
+    height:11em;
+}
+#logo{
+    width:200px;
+    height:auto;
+    border-right:solid;
+    border-width:1px;
+    box-shadow:2px;
+    border-color:black;
+    top:10px;
+    position:relative;
+}
+#name{
+    position:relative;
+    width:780px;
+    height:auto;
+    top:5px;
+}
+
+#bau
+{
+    position:relative;
+    height: auto;
+    width: 400px;
+    top: -11em;
+    left: 30em;
+}
+.nav{
+
+}
+#nav-bar{
+    width:100%;
+    height:60px;
+    background-color:#FDFDFD;
+    border-radius:5px;
+    box-shadow: 1px 0px 3px 1px #888888;
+    }
+.nav a:hover{
+    color: rgb(47, 145, 220);
+    
+}
+.nav a {
+    font-weight:380;
+    text-decoration:none;
+    color:#000;
+    padding:15px;    
+    text-align:center;
+    display:inline-block;
+}
+.nav li{
+    float:left;
+    list-style-type:none;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,500);
+
+/*
+  pad the body and set default font styles
+*/
+body {
+    
+}
+
+/*
+    drop down
+*/
+.dropbtn {
+
+}
+
+.dropbtn:hover, .dropbtn:focus {
+
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index:10;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color:#FFFFFF;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+
+}
+
+.show {
+    display:block;
+}

@@ -1,0 +1,124 @@
+<html>
+
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' type='text/css' href='css/main.css'>
+  
+  <script src="javascript/jquery-1.12.4.js"></script>
+  <script src="javascript/jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( ".datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+    } );
+  </script>
+  <body>
+<div id = 'MainContainer'>
+	<% request.getRequestDispatcher("link.html").include(request,response); %>
+	<%@ page import = "project1.db_queries" %>
+        <% db_queries c = new db_queries(); %>
+        
+        <%@ page import = "project1.Access" %>
+        <%        
+            // access control
+            Access access = new Access();
+            String user =  "";
+            String method = "";
+            session = request.getSession(false);
+            
+            user = (String)session.getAttribute("user-email");
+            method = "create_course";
+            
+            if(user == null){
+                out.println("Please login.");
+                request.getRequestDispatcher("login.html").include(request, response);
+            }            
+            else if(!access.has_access(user, method)){
+                out.println("You do not have permission to do that.<br>");
+            }
+            else{            
+        %>
+        <h2>Create Course</h2>
+        <div id = 'content'>
+    <form action="create_course" method="POST">
+	  
+	  <label>Enter Course Name:</label><br>
+      <input type="text" size="25" name="course_name"/>
+	<br>
+        
+	<label>Enter Course CRN:</label><br>
+
+      <input type="text" size="25" name="course_crn"/>
+	<br>
+	  
+	  <label>Enter Course Number of Lectures:</label><br>
+
+      <input type="text" size="25" name="course_number_of_lectures"/>
+	<br>
+	  
+	  <label>Enter Course Fees:</label><br>
+
+      <input type="text" size="25" name="course_fees"/>
+      <select name="course_currency" onmousedown="if(this.options.length>8){this.size=0;}"  onchange='this.size=0;' onblur="this.size=0;" size = "0">
+        <option value = 'USD'>USD</option>
+        <option value = 'L.L'>L.L</option>
+      </select>
+	<br>
+	  
+	  <label>Enter Course Title:</label><br>
+
+      <input type="text" size="25" name="course_title"/>
+	<br>
+	  
+	  <label>Enter Course Description:</label><br>
+
+      <input type="text" size="25" name="course_description"/>
+	<br>
+	  
+	  <label>Enter Course Start Date:</label><br>
+	
+      	<input type="text" class="datepicker" name="course_start_date">
+	<br>
+	  
+	  <label>Enter Course Maximum Capacity:</label><br>
+
+      <input type="text" size="25" name="course_maximum_capacity"/>
+	<br>
+	  
+	  <label>Enter Course Registration Deadline:</label><br>
+
+      <input type="text" class="datepicker" name="course_registration_deadline"/>
+	<br>
+	  
+	  <label>Select Course Instructor</label><br>
+
+      <select name="course_instructor_full_name" onmousedown="if(this.options.length>8){this.size=0;}"  onchange='this.size=0;' onblur="this.size=0;" size = "0">
+        <% for(int i = 0 ; i < c.getInstructors().size() ; i++)
+        {
+          %><option value = '<%out.print(c.getInstructors().get(i));%>'> <%out.print(c.getInstructors().get(i));%> </option>
+        <%}%>
+      </select>
+	<br>
+	  <label>Select Course Current Status</label><br>
+          <select name="course_status" onmousedown="if(this.options.length>8){this.size=0;}"  onchange='this.size=0;' onblur="this.size=0;" size = "0">
+            <option value = 'Pending'>Pending</option>
+            <option value = 'Started'>Started</option>
+            <option value = 'Finished'>Finished</option>
+          </select>
+          <br><br>
+	  <div class="Button Button--start">
+            <button type="submit"><span>Next</span></button>
+          </div>
+		
+
+    </form>
+    
+    <% } %> <!-- magic -->
+	</div>
+        </div>
+  </body>
+
+</html>
+

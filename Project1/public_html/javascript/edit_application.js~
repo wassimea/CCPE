@@ -1,0 +1,21 @@
+
+function delete_applications(row_id,course_id){
+	$(document).ready(function() {
+		    if(confirm('Are you sure ?')){
+			    var x_timer;    
+			    var row = row_id;
+				clearTimeout(x_timer);		        
+				x_timer = setTimeout(function(){
+				    delete_application(row);
+				}, 1000);
+		
+			    function delete_application(row){
+				$("#ResultTable").html('');
+				$.get('delete_application', {'application_id':row , 'course_id':course_id}, function(data) {
+				  $("#ResultTable").html(data);
+				});	
+			    }
+		}
+	  });
+
+}

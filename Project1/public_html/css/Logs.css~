@@ -1,0 +1,28 @@
+ul {
+  list-style-type: none;
+}
+
+li {
+  float: left;
+  margin: 2px;
+}
+
+#SearchContainer {
+  position: absolute;
+  width: 800px;
+}
+#SearchControls {
+  position:relative;
+}
+#SearchResult {
+  position:relative;
+}
+table {
+  width: 100%;
+}
+
+td, th {
+  padding: 10px 20px;
+  text-align: left;
+  border: 1px solid #ccc;
+}

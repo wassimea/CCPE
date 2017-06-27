@@ -1,0 +1,109 @@
+
+<div id='link'>	
+    <link href='css/link_css.css' type='text/css' rel='stylesheet' >
+    <div id='header'>
+        <a href='home.jsp'><img id='logo' src='images/logo.png'></a>
+        <img id='name' src='images/name.png'>
+        <img id='bau' src='images/bau.png'>
+    </div>
+    <div id='nav-bar'>
+        <ul class="nav">
+            <li>
+                <a href="home.jsp">Home</a>
+            </li>
+            <li>
+                <a href="mailbox">Mail</a>  
+            </li>                    
+            <li>
+                <div class="dropdown">
+                    <a href='#' onclick="myFunction('myDropdown1')" class="dropbtn">Applications & Courses</a>
+                    <div id="myDropdown1" class="dropdown-content">
+                        <a href="create_course1.jsp">Create a new Course</a>
+                        <a href="select_course_for_applications.jsp">Edit Applications</a>
+                        <a href="application.jsp">Apply for a course</a>
+                        <a href="force_add.jsp">Force Add</a>
+                        <a href="select_course.jsp">Manage Course</a>
+                    </div>
+                </div>
+            </li> 
+            <li>
+                <a href="CONTACT_US.html">Contact Us</a>
+            </li>
+            <li>
+                <div id="user"></div>
+            </li>
+            
+            <li>
+                <div id="roles"></div>
+            </li>
+            <li>
+                <div id='security'></div>
+            </li>            
+        </ul>
+        
+    </div>
+    <!---->
+</div>
+<br>
+<script>
+    
+    fix_login();
+    fix_security();
+    fix_roles();
+    
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction(myDropDown) {
+        remove_dropdown(myDropDown);
+        document.getElementById(myDropDown).classList.toggle("show");
+    }
+        
+    // Close the dropdown if the user clicks outside of it
+    function remove_dropdown(skip_this){
+        if (true) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                var skip = document.getElementById(skip_this);
+                if(openDropdown != skip){
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    } 
+                }
+            }
+        }
+    }
+    
+    function fix_login() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("user").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("POST", "check_login", true);
+      xhttp.send();
+    }
+    function fix_security() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("security").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("POST", "check_security", true);
+      xhttp.send();
+    }
+    function fix_roles() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("roles").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("POST", "check_roles", true);
+      xhttp.send();
+    }
+    
+</script>
